@@ -1,0 +1,9 @@
+body {
+    background: #324D62;
+    color: whitesmoke;
+}
+
+li {
+    list-style-type: none;
+    display: flex;
+}

@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Background color changer</title>
+
+    <style>
+      body {
+        font-family: Helvetica;
+        background: whitesmoke;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Options of colors:</h2>
+    <div></div>
+
+    <input type="text" id="colorOne" placeholder="Type a color" /> <br />
+    <input type="text" id="colorTwo" placeholder="Type another one" /> <br>
+    <input type="number" id="transitionTime" placeholder="Trasition time (seconds)" >
+
+    <button onclick="StartChangingTheColor()">Change the background</button>
+    <button onclick="StopChangingTheColor()">Stop</button>
+    <button onclick="ClearTheColors()">Clear</button>
+
+    <script>
+      var number = 1;
+
+      var intervalo;
+
+      function StartChangingTheColor() {
+        var colorOne = document.getElementById("colorOne").value;
+        var colorTwo = document.getElementById("colorTwo").value;
+
+        var time = document.getElementById("transitionTime");
+        var timeNumber = Number(time.value) * 1000
+        console.log(timeNumber)
+
+        intervalo = setInterval(function () {
+          if (number % 2 == 0) {
+            document.body.style.background = `${colorOne}`;
+          } else {
+            document.body.style.background = `${colorTwo}`;
+          }
+          number++;
+        }, timeNumber);
+      }
+
+      function StopChangingTheColor() {
+        clearInterval(intervalo);
+      }
+
+      function ClearTheColors() {
+        document.body.style.background = "whitesmoke"
+        document.getElementById("colorOne").value = ""
+        document.getElementById("colorTwo").value = ""
+        document.getElementById("transitionTime").value = ""
+      }
+    </script>
+  </body>
+</html>
